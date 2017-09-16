@@ -11,7 +11,5 @@ var server = app.listen(app.get('port'), function() {
     var port = server.address().port;
     // confirm with console log - view on http://localhost:3000
     // async in anonymous callback function
-    console.log('Magic happens on port ' + app.get('port'));
+    console.log('Magic happens on port ' + port);
 });
-// appears before the app.listen anon function
-console.log('Me first!');
