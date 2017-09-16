@@ -5,7 +5,7 @@ var app = express();
 
 var path = require('path');
 
-var routes = require('./routes');
+var routes = require('./api/routes');
 
 // eliminate hard-coded port number
 app.set('port', process.env.PORT);
