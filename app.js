@@ -4,19 +4,25 @@ var express = require('express');
 var app = express();
 
 var path = require('path');
+
+var routes = require('./routes');
+
 // eliminate hard-coded port number
 app.set('port', process.env.PORT);
 
 // custom middleware: functions that sit between request and response
 // functions run in the order they are placed
 app.use(function(req, res, next) {
+  // this allows us to see the request method and request path
   console.log(req.method, req.url);
   next();
 });
 
-
 // express uses default/static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+// tell express to use the routes; test with Postman
+app.use('/api', routes);
 
 app.get('/json', function(req, res) {
   console.log("GET the json");
