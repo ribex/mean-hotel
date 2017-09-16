@@ -7,7 +7,16 @@ app.set('port', process.env.PORT);
 
 app.get('/', function(req, res) {
     console.log("GET the homepage");
-    res.send("Express yourself");
+    res
+        .status(404)
+        .send("Express yourself");
+});
+
+app.get('/json', function(req, res) {
+    console.log("GET the json");
+    res
+        .status(200)
+        .json({"jsonData" : true});
 });
 
 // give express a port to listen for requests
