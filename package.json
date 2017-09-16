@@ -1,0 +1,29 @@
+{
+  "name": "mean-app",
+  "version": "1.0.0",
+  "description": "MEAN stack application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ribex/mean-hotel.git"
+  },
+  "keywords": [
+    "mean"
+  ],
+  "author": "Rebecca Wagaman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ribex/mean-hotel/issues"
+  },
+  "homepage": "https://github.com/ribex/mean-hotel#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.3"
+  }
+}
