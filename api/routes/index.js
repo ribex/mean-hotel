@@ -14,6 +14,10 @@ router
   // parameter in Express must be preceded by a ':'
   .route('/hotels/:hotelId')
   .get(ctrlHotels.hotelsGetOne);  
+  
+router
+  .route('/hotels/new')
+  .post(ctrlHotels.hotelAddOne);
 
 
 module.exports = router;

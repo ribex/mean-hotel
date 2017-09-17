@@ -5,6 +5,9 @@ var app = express();
 
 var path = require('path');
 
+// allow Express to parse form data for POST requests
+var bodyParser = require('body-parser');
+
 var routes = require('./api/routes');
 
 // eliminate hard-coded port number
@@ -20,6 +23,10 @@ app.use(function(req, res, next) {
 
 // express uses default/static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+// use middleware between the static path above and the routes below
+// extended : false option prevents warning in console when we run application
+app.use(bodyParser.urlencoded({ extended : false }));
 
 // tell express to use the routes; test with Postman
 app.use('/api', routes);
