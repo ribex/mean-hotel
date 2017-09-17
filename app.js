@@ -1,3 +1,5 @@
+// open connection to db as soon as application starts
+require('./api/data/dbconnection.js').open();
 // require express
 var express = require('express');
 // initialize express
