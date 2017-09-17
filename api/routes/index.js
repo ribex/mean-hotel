@@ -9,6 +9,11 @@ router
   .route('/hotels')
   // define method
   .get(ctrlHotels.hotelsGetAll);
+  
+router
+  // parameter in Express must be preceded by a ':'
+  .route('/hotels/:hotelId')
+  .get(ctrlHotels.hotelsGetOne);  
 
 
 module.exports = router;
