@@ -1,7 +1,13 @@
 // create controller that will run when /api/controllers is called
+// bring in db connection file
+var dbconn = require('../data/dbconnection.js');
 var hotelData = require('../data/hotel-data.json');
 
 module.exports.hotelsGetAll = function(req, res) {
+  // get the db connection to be able to use the data
+  var db = dbconn.get();
+  console.log("db", db);
+  
   // define function to run; can chain multiple methods (such as POST) to a single route
   console.log("GET the hotels");
   // pulling out query string: ?offset=2&count=2 returns { offset: '2', count: '2' }
