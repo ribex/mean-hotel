@@ -27,29 +27,14 @@ module.exports.hotelsGetAll = function(req, res) {
   // chain find and toArray methods to return correct json output
   collection
       .find()
+      .skip(offset)
+      .limit(count)
       .toArray(function(err, docs) {
         console.log("Found hotels", docs);
         res
           .status(200)
           .json(docs);
     });
-  
-  // console.log("db", db);
-  
-  // // define function to run; can chain multiple methods (such as POST) to a single route
-  // console.log("GET the hotels");
-  // // pulling out query string: ?offset=2&count=2 returns { offset: '2', count: '2' }
-  // console.log(req.query);
-  
-
-  
-  // // get a subset of hotelData array
-  // var returnData = hotelData.slice(offset, offset+count);  
-  
-  // res
-  //   .status(200)
-  //   // update this from hotelData to returnData so we get our slice
-  //   .json( returnData );
 };
 
 module.exports.hotelsGetOne = function(req, res) {
