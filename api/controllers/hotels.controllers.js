@@ -71,10 +71,12 @@ module.exports.hotelAddOne = function(req, res) {
     newHotel = req.body;
     // want to save stars as an number, not a string
     newHotel.stars = parseInt(req.body.stars, 10);
-    console.log(newHotel);
-    res
-      .status(200)
-      .json(newHotel);    
+    collection.insertOne(newHotel, function(err, response) {
+      console.log(response.ops);
+      res
+        .status(201)
+        .json(response.ops);  
+    });
   } else {
     console.log("Data missing from body");
     res
