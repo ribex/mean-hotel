@@ -2,6 +2,7 @@
 // bring in db connection file
 var dbconn = require('../data/dbconnection.js');
 var hotelData = require('../data/hotel-data.json');
+var ObjectId = require('mongodb').ObjectId;
 
 module.exports.hotelsGetAll = function(req, res) {
   // get the db connection to be able to use the data
@@ -38,14 +39,23 @@ module.exports.hotelsGetAll = function(req, res) {
 };
 
 module.exports.hotelsGetOne = function(req, res) {
+  var db = dbconn.get();
+  var collection = db.collection('hotels');
+  
   // extract hotelId from request parameter
   var hotelId = req.params.hotelId;
-  // create variable to hold information about individual hotel
-  var thisHotel = hotelData[hotelId];
   console.log("GET hotelId", hotelId);
-  res
-    .status(200)
-    .json( thisHotel );
+  
+  collection
+    .findOne({
+      _id : ObjectId(hotelId)
+    }, function(err, doc) {
+      res
+      .status(200)
+      .json( doc );
+    });
+  
+
 };
 
 // don't forget that we need to test this in Postman
