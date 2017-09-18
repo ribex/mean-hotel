@@ -9,6 +9,21 @@ module.exports.hotelsGetAll = function(req, res) {
   
   var collection = db.collection('hotels');
   
+  // set default values for offset and count
+  var offset = 0;
+  var count = 5;
+
+  // if an offset value is specified in query string, assign it instead of default offset
+  if (req.query && req.query.offset) {
+    // don't forget the radix for parseInt!
+    offset = parseInt(req.query.offset, 10);
+  }
+  
+  // if a count value is specified in query string, assign it instead of default count
+  if (req.query && req.query.count) {
+    count = parseInt(req.query.count, 10);
+  }
+  
   // chain find and toArray methods to return correct json output
   collection
       .find()
@@ -26,20 +41,7 @@ module.exports.hotelsGetAll = function(req, res) {
   // // pulling out query string: ?offset=2&count=2 returns { offset: '2', count: '2' }
   // console.log(req.query);
   
-  // // set default values for offset and count
-  // var offset = 0;
-  // var count = 5;
 
-  // // if an offset value is specified in query string, assign it instead of default offset
-  // if (req.query && req.query.offset) {
-  //   // don't forget the radix for parseInt!
-  //   offset = parseInt(req.query.offset, 10);
-  // }
-  
-  // // if a count value is specified in query string, assign it instead of default count
-  // if (req.query && req.query.count) {
-  //   count = parseInt(req.query.count, 10);
-  // }
   
   // // get a subset of hotelData array
   // var returnData = hotelData.slice(offset, offset+count);  
